@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq0u8b31fmo1d"]
+
+[ext_resource type="Texture2D" uid="uid://omgktlutjygo" path="res://assets/useful shit/basic factory.png" id="1_d2fcu"]
+[ext_resource type="Script" uid="uid://rbot087o6kai" path="res://prensa_de_grafite.gd" id="1_jfqrt"]
+
+[node name="PrensaDeGrafite" type="Node2D"]
+script = ExtResource("1_jfqrt")
+
+[node name="BasicFactory" type="Sprite2D" parent="."]
+position = Vector2(-32, -32)
+texture = ExtResource("1_d2fcu")
+centered = false
+offset = Vector2(16, 16)

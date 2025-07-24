@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://de75pb8ek3ngu"]
+
+[ext_resource type="Texture2D" uid="uid://c7wf41tjn45me" path="res://assets/useful shit/conveyor.png" id="1_hhedt"]
+[ext_resource type="Script" uid="uid://dc21we2q5q57w" path="res://esteira.gd" id="1_ls025"]
+
+[node name="Esteira" type="Node2D"]
+script = ExtResource("1_ls025")
+
+[node name="Conveyor" type="Sprite2D" parent="."]
+texture = ExtResource("1_hhedt")

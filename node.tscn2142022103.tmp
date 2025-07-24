@@ -1,0 +1,223 @@
+[gd_scene load_steps=22 format=3 uid="uid://d2qsywrldln5o"]
+
+[ext_resource type="Script" uid="uid://cvdkora60dfn" path="res://node.gd" id="1_j2q8x"]
+[ext_resource type="AudioStream" uid="uid://drhr6tm1ek8od" path="res://assets/Editor.ogg.ogg" id="2_l6pdb"]
+[ext_resource type="Texture2D" uid="uid://xeggc1yfwhry" path="res://assets/bacakground or beauty shit/spritesheet.png" id="3_112p8"]
+[ext_resource type="Texture2D" uid="uid://bk7isa7rya2l6" path="res://assets/useful shit/spritesheet.png" id="3_e2u21"]
+[ext_resource type="Script" uid="uid://bu80v3b0i44ei" path="res://player.gd" id="4_e2u21"]
+[ext_resource type="AudioStream" uid="uid://cl1g5fpk0clb5" path="res://assets/Menu.ogg.ogg" id="4_f0urt"]
+[ext_resource type="Texture2D" uid="uid://djealfjxhna4o" path="res://assets/useful shit/player.png" id="5_bss38"]
+[ext_resource type="PackedScene" uid="uid://de75pb8ek3ngu" path="res://esteira.tscn" id="7_r657h"]
+[ext_resource type="PackedScene" uid="uid://cq0u8b31fmo1d" path="res://prensa-de-grafite.tscn" id="8_f0urt"]
+[ext_resource type="PackedScene" uid="uid://c3ih3noow47b3" path="res://nucleo.tscn" id="8_jfkdj"]
+[ext_resource type="PackedScene" uid="uid://buai8fwvmfj7y" path="res://broca.tscn" id="9_wt6go"]
+
+[sub_resource type="Animation" id="Animation_bss38"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Editor_ogg:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-20.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Launch_ogg:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-20.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Menu_ogg:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-20.0]
+}
+
+[sub_resource type="Animation" id="Animation_tda05"]
+resource_name = "musica_start"
+length = 20.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Launch_ogg")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Editor_ogg:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 9.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-20.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Launch_ogg:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 9.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-20.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Menu_ogg:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.16667, 9.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-50.0, -15.0, -7.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qn3nj"]
+_data = {
+&"RESET": SubResource("Animation_bss38"),
+&"musica_start": SubResource("Animation_tda05")
+}
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2u21"]
+texture = ExtResource("3_112p8")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_bss38"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_e2u21")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bss38"]
+texture = ExtResource("3_e2u21")
+texture_region_size = Vector2i(32, 32)
+2:0/0 = 0
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+3:0/size_in_atlas = Vector2i(3, 3)
+3:0/0 = 0
+6:0/size_in_atlas = Vector2i(3, 3)
+6:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_tda05"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_bss38")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_r657h"]
+scenes/1/scene = ExtResource("8_f0urt")
+scenes/2/scene = ExtResource("7_r657h")
+scenes/3/scene = ExtResource("8_jfkdj")
+scenes/4/scene = ExtResource("9_wt6go")
+
+[sub_resource type="TileSet" id="TileSet_f0urt"]
+tile_size = Vector2i(32, 32)
+custom_data_layer_0/name = "tipo-de-bloco"
+custom_data_layer_0/type = 4
+sources/0 = SubResource("TileSetScenesCollectionSource_r657h")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bss38"]
+size = Vector2(46, 47)
+
+[node name="Node" type="Node"]
+script = ExtResource("1_j2q8x")
+
+[node name="musicas" type="Node" parent="."]
+
+[node name="Editor_ogg" type="AudioStreamPlayer2D" parent="musicas"]
+position = Vector2(-408, 390)
+stream = ExtResource("2_l6pdb")
+volume_db = -20.0
+
+[node name="Launch_ogg" type="AudioStreamPlayer2D" parent="musicas"]
+position = Vector2(-649, 381)
+volume_db = -20.0
+
+[node name="Menu_ogg" type="AudioStreamPlayer2D" parent="musicas"]
+position = Vector2(-524, 475)
+stream = ExtResource("4_f0urt")
+volume_db = -20.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="musicas"]
+libraries = {
+&"": SubResource("AnimationLibrary_qn3nj")
+}
+
+[node name="Tiles" type="Node" parent="."]
+
+[node name="Bottom TileMap" type="TileMapLayer" parent="Tiles"]
+tile_set = SubResource("TileSet_bss38")
+
+[node name="Mid TileMap" type="TileMapLayer" parent="Tiles"]
+z_index = 1
+tile_map_data = PackedByteArray(0, 0, 247, 255, 2, 0, 1, 0, 6, 0, 2, 0, 0, 0, 248, 255, 2, 0, 1, 0, 6, 0, 2, 0, 0, 0, 249, 255, 2, 0, 1, 0, 6, 0, 2, 0, 0, 0, 250, 255, 2, 0, 1, 0, 6, 0, 2, 0, 0, 0)
+tile_set = SubResource("TileSet_tda05")
+
+[node name="Player TileMap" type="TileMapLayer" parent="Tiles"]
+z_index = 2
+tile_map_data = PackedByteArray(0, 0, 247, 255, 2, 0, 1, 0, 6, 0, 2, 0, 0, 0, 248, 255, 2, 0, 1, 0, 6, 0, 2, 0, 0, 0, 249, 255, 2, 0, 1, 0, 6, 0, 2, 0, 0, 0, 250, 255, 2, 0, 1, 0, 6, 0, 2, 0, 0, 0)
+tile_set = SubResource("TileSet_tda05")
+
+[node name="Top TileMap" type="TileMapLayer" parent="Tiles"]
+z_index = 4
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Tiles"]
+tile_set = SubResource("TileSet_f0urt")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("4_e2u21")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="Player2" type="Sprite2D" parent="Player"]
+texture = ExtResource("5_bss38")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+visible = false
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_bss38")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -30.0
+offset_top = -61.0
+offset_right = 10.0
+offset_bottom = -38.0
