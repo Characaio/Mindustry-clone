@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://buai8fwvmfj7y"]
 
-[ext_resource type="Script" uid="uid://ow88e1swepve" path="res://broca.gd" id="1_2lbec"]
+[ext_resource type="Script" uid="uid://ow88e1swepve" path="res://scripts/broca.gd" id="1_2lbec"]
 [ext_resource type="Texture2D" uid="uid://q8srb7g3wp1g" path="res://assets/useful shit/Drills/Basic Drill/mechanical-drill.png" id="2_isv1g"]
 [ext_resource type="Texture2D" uid="uid://16lfcoiql1j6" path="res://assets/useful shit/Drills/Basic Drill/mechanical-drill-top.png" id="3_l6a34"]
 [ext_resource type="Texture2D" uid="uid://y0of83dkbvpf" path="res://assets/useful shit/Drills/Basic Drill/mechanical-drill-rotator.png" id="4_4qxyq"]

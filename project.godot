@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GeneralInformation="*res://general_information.gd"
-FrameHandler="*res://frame_handle_esteira.gd"
+GeneralInformation="*res://scripts/general_information.gd"
+FrameHandler="*res://scripts/frame_handle_esteira.gd"
 
 [display]
 

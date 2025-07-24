@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://de75pb8ek3ngu"]
 
 [ext_resource type="Texture2D" uid="uid://c7wf41tjn45me" path="res://assets/useful shit/conveyor.png" id="1_hhedt"]
-[ext_resource type="Script" uid="uid://dc21we2q5q57w" path="res://esteira.gd" id="1_ls025"]
+[ext_resource type="Script" uid="uid://dc21we2q5q57w" path="res://scripts/esteira.gd" id="1_ls025"]
 [ext_resource type="Texture2D" uid="uid://oh24vusubdof" path="res://assets/useful shit/conveyors/conveyor-0-0.png" id="3_kegw6"]
 [ext_resource type="Texture2D" uid="uid://b6v8xskfef8ax" path="res://assets/useful shit/conveyors/conveyor-0-1.png" id="4_uf5y4"]
 [ext_resource type="Texture2D" uid="uid://df5v7t36veb3u" path="res://assets/useful shit/conveyors/conveyor-0-2.png" id="5_dtplc"]
