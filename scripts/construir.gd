@@ -5,14 +5,17 @@ extends Node2D
 var PosDoMouseNaGrid:Vector2
 var MapaDaGrid:Dictionary
 var Escolha:Dictionary
+var Escolha_primeira:String
 var item
 var ghost
 var Rotação:int 
 var PosDoTemp:Vector2
-const BROCA = preload("res://broca.tscn")
-const ESTEIRA = preload("res://esteira.tscn")
-const NUCLEO = preload("res://nucleo.tscn")
-const PRENSA_DE_GRAFITE = preload("res://prensa-de-grafite.tscn")
+
+
+
+
+
+
 const CaminhoDosGhost:String = '../../Estruturas/Ghosting'
 const CaminhoDasEstruturas:String = '../../Estruturas/'
 
@@ -20,84 +23,43 @@ var Inspecionar:Dictionary = {
 	'id': -1
 }
 
-var PrensaDeGrafite:Dictionary = {
-	'id': 0,
-	'cena': PRENSA_DE_GRAFITE,
-	'tipo_de_bloco': 'Fabrica',
-	'tamanhox': 2,
-	'tamanhoy': 2,
-	'Rotacional': false,
-	'direção': 0,
-	'nome': 'PrensaDeGrafite'
-}
 
-var Esteira:Dictionary =  {
-	'id': 1,
-	'cena': ESTEIRA,
-	'tipo_de_bloco': 'Esteira',
-	'tamanhox': 1,
-	'tamanhoy': 1,
-	'Rotacional': true,
-	'direção': 0,
-	'nome': 'Esteira'
-}
-
-var Nucleo:Dictionary =  {
-	'id': 2,
-	'cena': NUCLEO,
-	'tipo_de_bloco': 'Nucleo',
-	'tamanhox': 3,
-	'tamanhoy': 3,
-	'Rotacional': false,
-	'direção': 0,
-	'nome': 'Nucleo'
-}
-
-var Broca:Dictionary =  {
-	'id':3,
-	'cena': BROCA,
-	'tipo_de_bloco': 'Broca',
-	'tamanhox': 2,
-	'tamanhoy': 2,
-	'Rotacional': false,
-	'direção': 0,
-	'nome': 'Broca'
-}
 
 var MouseAntigo
 var MouseNovo
 func _ready() -> void:
 	
-	Escolha = PrensaDeGrafite
-	item = Escolha['cena'].instantiate()
+	Escolha = Inspecionar
 	
 
 func teste() -> void:
 	print('teste')
-	
+
+var temp:Array[Vector2]
+var chilling:bool = true
+var PosDaCelulaGlobal:Vector2
+var PosDaCelulaLocal:Vector2
+
 func handle_click() -> void:
 	
-	var temp:Array
-	var chilling:bool = true
-	var PosDaCelulaGlobal:Vector2
+	temp.clear()
+	print('temp: ',temp)
+	
 	for x in range(Escolha['tamanhox']):
 		for y in range(Escolha['tamanhoy']):
 			print('sla karaiiiii')
-			var PosDaCelulaLocal:Vector2 = Vector2(x,y)
+			PosDaCelulaLocal = Vector2(x,y)
 			if Escolha['tamanhox'] == 3:
 				PosDaCelulaGlobal= PosDoMouseNaGrid + PosDaCelulaLocal + Vector2(-1,-1)
 			else:
 				PosDaCelulaGlobal = PosDoMouseNaGrid + PosDaCelulaLocal
 			temp.append(PosDaCelulaGlobal)
 			if MapaDaGrid.has(PosDaCelulaGlobal):
-				
 				print('fudeu1')
 				if MapaDaGrid[PosDaCelulaGlobal]['tipo_de_bloco'] != 'Esteira':
 					chilling = false
 	if chilling:
 		for chave in temp:
-			#print('chave BRABA:', chave)
-			
 			GeneralInformation.mudar_grid(PosDoMouseNaGrid,chave,Escolha)
 		print('to zen')
 		spawnar_bloco()
@@ -108,6 +70,7 @@ func handle_click() -> void:
 
 func spawnar_bloco() -> void:
 	item = Escolha['cena'].instantiate()
+	item.atualizar_id(temp)
 	item.position = player_tile_map.map_to_local(PosDoMouseNaGrid)
 
 	get_node(CaminhoDasEstruturas).add_child(item)
@@ -158,34 +121,46 @@ func _physics_process(delta: float) -> void:
 	#print('PosDoMouseNaGrid',PosDoMouseNaGrid,'PosDoTemp', PosDoTemp)
 	if Input.is_action_pressed('m1'):
 		if Escolha != Inspecionar:
-			handle_click()
+			if not MapaDaGrid.has(PosDoMouseNaGrid):
+				handle_click()
 		else:
 			print('posição do mouse: ', PosDoMouseNaGrid)
 			if MapaDaGrid.has(PosDoMouseNaGrid):
 				print('dados da celula: ', MapaDaGrid[PosDoMouseNaGrid])
-	
+				
+	if Input.is_action_just_pressed('m2'):
+		if MapaDaGrid.has(PosDoMouseNaGrid):
+			MapaDaGrid.erase(PosDoMouseNaGrid)
+			for estruturinha in get_node(CaminhoDasEstruturas).get_children():
+				if estruturinha.name != 'Ghosting':
+					if estruturinha.verificar(PosDoMouseNaGrid):
+						estruturinha.deletar()
+				
+			
 	if Input.is_action_just_pressed("0"):
 		limpar_baguios()
-		Escolha = Inspecionar
+		Escolha_primeira = 'Inspecionar'
 		
 	if Input.is_action_just_pressed('1'):
 		limpar_baguios()
-		Escolha = PrensaDeGrafite
+		Escolha_primeira = 'Prensa_De_Grafite'
 		
 	if Input.is_action_just_pressed('2'):
 		limpar_baguios()
-		Escolha = Esteira
+		Escolha_primeira = 'Esteira'
 		
 	if Input.is_action_just_pressed('3'):
 		limpar_baguios()
-		Escolha = Nucleo
+		Escolha_primeira = 'Nucleo'
 		
 	if Input.is_action_just_pressed('4'):
 		limpar_baguios()
-		Escolha = Broca
-		
+		Escolha_primeira = 'Broca'
+	
+	Escolha = TileDataBase.get_tile(Escolha_primeira)
+	
 	if Input.is_action_just_pressed('r'):
-		if Escolha['Rotacional']:
+		if Escolha.has('Rotacional'):
 			print('ain, rotacioneiii')
 			Rotação += 90
 			if Rotação == 360:

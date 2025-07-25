@@ -1,6 +1,6 @@
-extends Node2D
-class_name prensa_de_grafite
-var SouGhost:bool
+extends Bloco
 
-func ser_ghost()  -> void:
-	print('sou ghost')
+class_name prensa_de_grafite
+
+func _ready() -> void:
+	pass

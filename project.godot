@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GeneralInformation="*res://scripts/general_information.gd"
 FrameHandler="*res://scripts/frame_handle_esteira.gd"
+TileDataBase="*res://scripts/TileDataBase.gd"
 
 [display]
 

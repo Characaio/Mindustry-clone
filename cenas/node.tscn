@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://d2qsywrldln5o"]
+[gd_scene load_steps=22 format=3 uid="uid://d2qsywrldln5o"]
 
 [ext_resource type="Script" uid="uid://cvdkora60dfn" path="res://scripts/node.gd" id="1_p2n4s"]
 [ext_resource type="Script" uid="uid://5s0vtke0e1yn" path="res://scripts/general_information.gd" id="2_pj3ui"]
 [ext_resource type="Script" uid="uid://dssv6kmdqd3eq" path="res://scripts/frame_handle_esteira.gd" id="3_47nsi"]
 [ext_resource type="Script" uid="uid://dgnn4m4k3b3j6" path="res://scripts/musicas.gd" id="4_0f7rm"]
+[ext_resource type="Script" uid="uid://cepq3mjbsol3" path="res://scripts/TileDataBase.gd" id="4_pj3ui"]
 [ext_resource type="AudioStream" uid="uid://drhr6tm1ek8od" path="res://assets/Editor.ogg.ogg" id="5_1cwl4"]
 [ext_resource type="AudioStream" uid="uid://cbgwu151flxot" path="res://assets/Launch.ogg.ogg" id="6_xmxbe"]
 [ext_resource type="AudioStream" uid="uid://cl1g5fpk0clb5" path="res://assets/Menu.ogg.ogg" id="7_gdsao"]
@@ -141,6 +142,9 @@ script = ExtResource("2_pj3ui")
 
 [node name="Frame-Das-Esteiras" type="Node2D" parent="Frame-Handlers"]
 script = ExtResource("3_47nsi")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("4_pj3ui")
 
 [node name="Estruturas" type="Node" parent="."]
 

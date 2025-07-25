@@ -44,42 +44,22 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_75w3v"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_aa170"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_dq3x7")
+"texture": ExtResource("19_rusqd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_popdw")
+"texture": ExtResource("20_yumyq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_tk2ss")
+"texture": ExtResource("21_06hgp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_gcdqb")
+"texture": ExtResource("22_ebfen")
 }],
-"loop": false,
-"name": &"default",
-"speed": 10.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3e0nq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("11_72wtl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_72geg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_6n6ht")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_y2srf")
-}],
-"loop": false,
+"loop": true,
 "name": &"default",
 "speed": 10.0
 }]
@@ -99,25 +79,45 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("18_tvl3u")
 }],
-"loop": false,
+"loop": true,
 "name": &"default",
 "speed": 10.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_aa170"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_3e0nq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("19_rusqd")
+"texture": ExtResource("11_72wtl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("20_yumyq")
+"texture": ExtResource("12_72geg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_06hgp")
+"texture": ExtResource("13_6n6ht")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_ebfen")
+"texture": ExtResource("14_y2srf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2kasd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_dq3x7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_popdw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tk2ss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gcdqb")
 }],
 "loop": true,
 "name": &"default",
@@ -141,28 +141,6 @@ frame = 3
 frame_progress = 1.0
 centered = false
 
-[node name="conveyor1" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(-16, -16)
-sprite_frames = SubResource("SpriteFrames_75w3v")
-centered = false
-
-[node name="conveyor2" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(-16, -16)
-sprite_frames = SubResource("SpriteFrames_3e0nq")
-frame = 3
-frame_progress = 1.0
-centered = false
-
-[node name="conveyor3" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(-16, -16)
-sprite_frames = SubResource("SpriteFrames_onpw7")
-frame = 3
-frame_progress = 1.0
-centered = false
-
 [node name="Place-arrow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 0.666667, 1)
 z_index = -1
@@ -170,91 +148,184 @@ position = Vector2(-1, 0)
 rotation = 1.5708
 texture = ExtResource("23_uf5y4")
 
+[node name="VeioDe-VaiPara" type="Node" parent="."]
+
 [node name="ESTEIRA4" type="Node2D" parent="."]
 
-[node name="VeioDe-VaiPara" type="Node" parent="ESTEIRA4"]
-
-[node name="DOWN-RIGHT" type="AnimatedSprite2D" parent="ESTEIRA4"]
+[node name="Up-Right" type="AnimatedSprite2D" parent="ESTEIRA4"]
 visible = false
 position = Vector2(-16, -16)
 sprite_frames = SubResource("SpriteFrames_aa170")
-frame_progress = 0.77893
+frame_progress = 0.243025
 centered = false
 
-[node name="DOWN-LEFT" type="AnimatedSprite2D" parent="ESTEIRA4"]
+[node name="Down-Right" type="AnimatedSprite2D" parent="ESTEIRA4"]
 visible = false
 position = Vector2(-16, -16)
 sprite_frames = SubResource("SpriteFrames_aa170")
-frame_progress = 0.943137
-centered = false
-flip_h = true
-
-[node name="UP-RIGHT" type="AnimatedSprite2D" parent="ESTEIRA4"]
-visible = false
-position = Vector2(-16, -16)
-sprite_frames = SubResource("SpriteFrames_aa170")
-frame_progress = 0.205876
+frame_progress = 0.68968
 centered = false
 flip_v = true
 
-[node name="UP-LEFT" type="AnimatedSprite2D" parent="ESTEIRA4"]
+[node name="Up-Left" type="AnimatedSprite2D" parent="ESTEIRA4"]
 visible = false
 position = Vector2(-16, -16)
 sprite_frames = SubResource("SpriteFrames_aa170")
-frame_progress = 0.834007
+frame_progress = 0.806547
+centered = false
+flip_h = true
+
+[node name="Down-Left" type="AnimatedSprite2D" parent="ESTEIRA4"]
+visible = false
+position = Vector2(-16, -16)
+sprite_frames = SubResource("SpriteFrames_aa170")
+frame_progress = 0.961758
 centered = false
 flip_h = true
 flip_v = true
 
-[node name="RIGHT-DOWN" type="AnimatedSprite2D" parent="ESTEIRA4"]
+[node name="Left-Down" type="AnimatedSprite2D" parent="ESTEIRA4"]
 visible = false
 position = Vector2(-16, 16)
 rotation = 4.71239
 sprite_frames = SubResource("SpriteFrames_aa170")
-frame_progress = 0.78842
+frame_progress = 0.702178
 centered = false
 flip_h = true
 
-[node name="RIGHT-UP" type="AnimatedSprite2D" parent="ESTEIRA4"]
+[node name="Left-Up" type="AnimatedSprite2D" parent="ESTEIRA4"]
 visible = false
 position = Vector2(16, -16)
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_aa170")
-frame_progress = 0.656445
+frame_progress = 0.460956
 centered = false
 flip_h = true
 flip_v = true
 
-[node name="LEFT-DOWN" type="AnimatedSprite2D" parent="ESTEIRA4"]
+[node name="Right-Down" type="AnimatedSprite2D" parent="ESTEIRA4"]
 visible = false
 position = Vector2(16, -16)
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_aa170")
-frame_progress = 0.57251
+frame_progress = 0.77893
 centered = false
 
-[node name="LEFT-UP" type="AnimatedSprite2D" parent="ESTEIRA4"]
+[node name="Right-Up" type="AnimatedSprite2D" parent="ESTEIRA4"]
 visible = false
 position = Vector2(16, -16)
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_aa170")
-frame_progress = 0.0915459
+frame_progress = 0.717948
 centered = false
 flip_h = true
+
+[node name="ESTEIRA3" type="Node2D" parent="."]
+
+[node name="LeftDown-Right" type="AnimatedSprite2D" parent="ESTEIRA3"]
+visible = false
+position = Vector2(-16, -16)
+sprite_frames = SubResource("SpriteFrames_onpw7")
+frame_progress = 0.0565635
+centered = false
+
+[node name="LeftUp-Down" type="AnimatedSprite2D" parent="ESTEIRA3"]
+visible = false
+position = Vector2(16, -16)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_onpw7")
+frame_progress = 0.0550149
+centered = false
+
+[node name="LeftDown-Up" type="AnimatedSprite2D" parent="ESTEIRA3"]
+visible = false
+position = Vector2(-16, 16)
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_onpw7")
+frame_progress = 0.431847
+centered = false
+flip_v = true
+
+[node name="LeftUp-Right" type="AnimatedSprite2D" parent="ESTEIRA3"]
+visible = false
+position = Vector2(-16, -16)
+sprite_frames = SubResource("SpriteFrames_onpw7")
+frame_progress = 0.700412
+centered = false
+flip_v = true
+
+[node name="RightDown-Left" type="AnimatedSprite2D" parent="ESTEIRA3"]
+visible = false
+position = Vector2(16, 16)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_onpw7")
+frame_progress = 0.107479
+centered = false
+flip_v = true
+
+[node name="RightUp-Left" type="AnimatedSprite2D" parent="ESTEIRA3"]
+visible = false
+position = Vector2(16, 16)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_onpw7")
+frame_progress = 0.871362
+centered = false
+
+[node name="RightDown-Up" type="AnimatedSprite2D" parent="ESTEIRA3"]
+visible = false
+position = Vector2(-16, 16)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_onpw7")
+frame_progress = 0.51886
+centered = false
+
+[node name="RightUp-Down" type="AnimatedSprite2D" parent="ESTEIRA3"]
+visible = false
+position = Vector2(16, -16)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_onpw7")
+frame_progress = 0.926869
+centered = false
+flip_v = true
+
+[node name="ESTEIRA2" type="Node2D" parent="."]
+
+[node name="LeftUpDown-Right" type="AnimatedSprite2D" parent="ESTEIRA2"]
+visible = false
+position = Vector2(-16, -16)
+sprite_frames = SubResource("SpriteFrames_3e0nq")
+frame_progress = 0.30568
+centered = false
+
+[node name="RightUpDown-Left" type="AnimatedSprite2D" parent="ESTEIRA2"]
+visible = false
+position = Vector2(-16, -16)
+sprite_frames = SubResource("SpriteFrames_3e0nq")
+frame_progress = 0.794438
+centered = false
+
+[node name="RightLeftUp-Down" type="AnimatedSprite2D" parent="ESTEIRA2"]
+visible = false
+position = Vector2(-16, -16)
+sprite_frames = SubResource("SpriteFrames_3e0nq")
+frame_progress = 0.0807776
+centered = false
+
+[node name="RightLeftDown-Up" type="AnimatedSprite2D" parent="ESTEIRA2"]
+visible = false
+position = Vector2(-16, -16)
+sprite_frames = SubResource("SpriteFrames_3e0nq")
+frame_progress = 0.970916
+centered = false
+
+[node name="ESTEIRA1" type="Node2D" parent="."]
+
+[node name="CONVEY" type="AnimatedSprite2D" parent="ESTEIRA1"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_2kasd")
+frame_progress = 0.934086
 
 [node name="cantos" type="Node2D" parent="."]
 visible = false
 
-[node name="conveyor4-0" type="AnimatedSprite2D" parent="cantos"]
-position = Vector2(224, -63)
-sprite_frames = SubResource("SpriteFrames_aa170")
-frame_progress = 0.97579
-centered = false
-
-[node name="2" type="Node2D" parent="cantos"]
-
-[node name="3" type="Node2D" parent="cantos"]
-
 [node name="4" type="Node2D" parent="cantos"]
-
-[node name="5" type="Node2D" parent="cantos"]
