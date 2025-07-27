@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://buai8fwvmfj7y"]
+[gd_scene load_steps=9 format=3 uid="uid://buai8fwvmfj7y"]
 
 [ext_resource type="Script" uid="uid://ow88e1swepve" path="res://scripts/broca.gd" id="1_2lbec"]
 [ext_resource type="Texture2D" uid="uid://q8srb7g3wp1g" path="res://assets/useful shit/Drills/Basic Drill/mechanical-drill.png" id="2_isv1g"]
-[ext_resource type="Texture2D" uid="uid://16lfcoiql1j6" path="res://assets/useful shit/Drills/Basic Drill/mechanical-drill-top.png" id="3_l6a34"]
+[ext_resource type="Texture2D" uid="uid://fyiroxtnukh5" path="res://assets/useful shit/Drills/Basic Drill/mechanical-drill-top-1.png" id="3_xqnoi"]
 [ext_resource type="Texture2D" uid="uid://y0of83dkbvpf" path="res://assets/useful shit/Drills/Basic Drill/mechanical-drill-rotator.png" id="4_4qxyq"]
+[ext_resource type="Texture2D" uid="uid://d3vr64s55jq0p" path="res://assets/useful shit/Drills/Basic Drill/mechanical-drill-top-2.png" id="4_ag2dh"]
 
 [sub_resource type="Animation" id="Animation_huk2y"]
 length = 0.001
@@ -50,10 +51,15 @@ script = ExtResource("1_2lbec")
 position = Vector2(16, 16)
 texture = ExtResource("2_isv1g")
 
-[node name="Mechanical-drill-top" type="Sprite2D" parent="."]
-z_index = 2
+[node name="Mechanical-drill-top-1" type="Sprite2D" parent="."]
 position = Vector2(16, 16)
-texture = ExtResource("3_l6a34")
+texture = ExtResource("3_xqnoi")
+
+[node name="Mechanical-drill-top-2" type="Sprite2D" parent="."]
+modulate = Color(100, 100, 100, 1)
+z_index = 1
+position = Vector2(16, 16)
+texture = ExtResource("4_ag2dh")
 
 [node name="Mechanical-drill-rotator" type="Sprite2D" parent="."]
 z_index = 1

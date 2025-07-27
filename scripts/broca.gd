@@ -5,6 +5,8 @@ class_name broca
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var label: Label = $Label
 
+@onready var mechanical_drill_top_2: Sprite2D = $"Mechanical-drill-top-2"
+
 var GridDosOre1:Dictionary
 var Quantidade:int
 var TipoDeMinerio:Dictionary 
@@ -16,9 +18,11 @@ var info:Dictionary
 var dados: Dictionary
 
 var VelocidadeBase:float
+var quantidade:int
+var Cores:Array[Color]
 
 func _ready() -> void: 
-	pass
+	mechanical_drill_top_2.modulate = Color.from_rgba8(201,165,143)
 
 func minerar_minerio():
 	VelocidadeTotal = VelocidadeBase * Quantidade
@@ -27,22 +31,28 @@ func verificar_minerios() -> void:
 	GridDosOre1 = GeneralInformation.pegar_grid_dos_ores()
 	Quantidade = 0
 	TipoDeMinerio.clear()
-	for chave in GridDosOre1.keys():
-		info[GridDosOre1[chave]['Nome']] = 0
+	var valor
+	print('Minerios: ',Ore.pegar_minerios())
 	
-	for chave in GridDosOre1.keys():
-		if chave in Id:
-			info[GridDosOre1[chave]['Nome']] += 1
-			TipoDeMinerio = info
-	for chave in info.keys():
-		if info[chave] == 0:
-			info.erase(chave)
+	for id in Id:
+		valor = GeneralInformation.pegar_item_especifico_dos_minerios(id)
+		print('Id: ',id, 'Item: ',valor)
+		if valor != {}:
+			valor['Quantidade'] += 1
+			info[id] = valor
 			
-			
+	print('Info: ', info)
+	
+	for karai in info.values():
+		print('Karai: ', karai)
+		if karai['Nome'] == 'Thorium':
+			Quantidade += karai['Quantidade']
 	print('quantidade: ', Quantidade)
 	print('TipoDeMinerio: ', TipoDeMinerio)
 	label.text = str(TipoDeMinerio)
-
+	if info.has('Cor'):
+		mechanical_drill_top_2.modulate = info['Cor']
+		
 func descobrir_dados(Escolha:Dictionary) -> void:
 	print('tamanhoX: ',Escolha['tamanhox'] )
 	print('tamanhoY: ',Escolha['tamanhoy'] )

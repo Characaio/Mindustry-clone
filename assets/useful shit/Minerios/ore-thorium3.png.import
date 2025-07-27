@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://flth55gd7lwk"
-path="res://.godot/imported/ore-copper3.png-6a450bdabc087b246b664f7c4c2ceb4c.ctex"
+uid="uid://dya6pqwqru635"
+path="res://.godot/imported/ore-thorium3.png-601f46da271a89211d7a3f6bc5ca86c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ore-copper3.png"
-dest_files=["res://.godot/imported/ore-copper3.png-6a450bdabc087b246b664f7c4c2ceb4c.ctex"]
+source_file="res://assets/useful shit/Minerios/ore-thorium3.png"
+dest_files=["res://.godot/imported/ore-thorium3.png-601f46da271a89211d7a3f6bc5ca86c5.ctex"]
 
 [params]
 

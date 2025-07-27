@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4y5x3bh5j00g"
-path="res://.godot/imported/ore-titanium1.png-91cc9a1c071f0026dca118ab0de62af3.ctex"
+uid="uid://dj2ogrh4msxjo"
+path="res://.godot/imported/item-copper.png-b6abab5ed566e83b88704c4395135eb4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ore-titanium1.png"
-dest_files=["res://.godot/imported/ore-titanium1.png-91cc9a1c071f0026dca118ab0de62af3.ctex"]
+source_file="res://assets/useful shit/Minerios/Minerio Item/item-copper.png"
+dest_files=["res://.godot/imported/item-copper.png-b6abab5ed566e83b88704c4395135eb4.ctex"]
 
 [params]
 

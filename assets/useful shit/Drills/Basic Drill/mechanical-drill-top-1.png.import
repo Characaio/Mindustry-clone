@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ybiojnwonlan"
-path="res://.godot/imported/ore-copper1.png-5366345dce2f410eca88712ca1032deb.ctex"
+uid="uid://fyiroxtnukh5"
+path="res://.godot/imported/mechanical-drill-top-1.png-fd2ea1904d037af62e68c8cc780b1578.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ore-copper1.png"
-dest_files=["res://.godot/imported/ore-copper1.png-5366345dce2f410eca88712ca1032deb.ctex"]
+source_file="res://assets/useful shit/Drills/Basic Drill/mechanical-drill-top-1.png"
+dest_files=["res://.godot/imported/mechanical-drill-top-1.png-fd2ea1904d037af62e68c8cc780b1578.ctex"]
 
 [params]
 

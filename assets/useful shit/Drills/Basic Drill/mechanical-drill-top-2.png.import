@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvj37s6408vbd"
-path="res://.godot/imported/ore-scrap1.png-41b591766567da94fc2a2c6e81c22d5b.ctex"
+uid="uid://d3vr64s55jq0p"
+path="res://.godot/imported/mechanical-drill-top-2.png-44a24cafa9e56865cb713ffa47c462ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ore-scrap1.png"
-dest_files=["res://.godot/imported/ore-scrap1.png-41b591766567da94fc2a2c6e81c22d5b.ctex"]
+source_file="res://assets/useful shit/Drills/Basic Drill/mechanical-drill-top-2.png"
+dest_files=["res://.godot/imported/mechanical-drill-top-2.png-44a24cafa9e56865cb713ffa47c462ea.ctex"]
 
 [params]
 

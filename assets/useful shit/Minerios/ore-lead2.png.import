@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccj4o4ykpk0t1"
-path="res://.godot/imported/ore-scrap3.png-588b958c1330477812a02dc92cb5e7eb.ctex"
+uid="uid://dohi0tpeqxmi0"
+path="res://.godot/imported/ore-lead2.png-3f2797d4a8cc8b3c60302800c7584694.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ore-scrap3.png"
-dest_files=["res://.godot/imported/ore-scrap3.png-588b958c1330477812a02dc92cb5e7eb.ctex"]
+source_file="res://assets/useful shit/Minerios/ore-lead2.png"
+dest_files=["res://.godot/imported/ore-lead2.png-3f2797d4a8cc8b3c60302800c7584694.ctex"]
 
 [params]
 

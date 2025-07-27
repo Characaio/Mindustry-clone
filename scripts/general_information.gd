@@ -14,6 +14,10 @@ func pegar_grid() -> Dictionary:
 func pegar_grid_dos_ores() -> Dictionary:
 	return MapaDaGridOres
 
+func pegar_item_especifico_dos_minerios(posição) -> Dictionary:
+	if MapaDaGridOres.has(posição):
+		return MapaDaGridOres[posição].duplicate(true)
+	return {}
 func pegar_mouse() -> Vector2:
 	return PosDoMouseNaGrid
 
