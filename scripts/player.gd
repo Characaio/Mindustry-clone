@@ -63,7 +63,6 @@ func _physics_process(delta: float) -> void:
 	var direction : Vector2 = Input.get_vector("esquerda",'direita','cima','baixo').normalized()
 	ZoomAtual = camera_2d.zoom
 	camera_2d.zoom = lerp(ZoomAtual,ZoomFuturo, 0.05)
-	
 	velocity = direction * SPEED
 	
 	label.position = position

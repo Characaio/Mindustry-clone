@@ -1,0 +1,172 @@
+[gd_scene load_steps=27 format=3 uid="uid://pe28iop3ays1"]
+
+[ext_resource type="Script" uid="uid://ke8gsclwyw44" path="res://ores.gd" id="1_jjbl4"]
+[ext_resource type="Texture2D" uid="uid://iyiq4frfg4nm" path="res://ore-coal1.png" id="1_rdkiy"]
+[ext_resource type="Texture2D" uid="uid://pb46884sumyv" path="res://ore-coal2.png" id="2_jjbl4"]
+[ext_resource type="Texture2D" uid="uid://np5euqxpmoit" path="res://ore-coal3.png" id="3_6dpa2"]
+[ext_resource type="Texture2D" uid="uid://ybiojnwonlan" path="res://ore-copper1.png" id="4_7t4pu"]
+[ext_resource type="Texture2D" uid="uid://d0y16l4joxdlk" path="res://ore-copper2.png" id="5_3wk6l"]
+[ext_resource type="Texture2D" uid="uid://flth55gd7lwk" path="res://ore-copper3.png" id="6_huvdv"]
+[ext_resource type="Texture2D" uid="uid://q50aeu2026yr" path="res://ore-lead1.png" id="7_y52do"]
+[ext_resource type="Texture2D" uid="uid://dohi0tpeqxmi0" path="res://ore-lead2.png" id="8_55i28"]
+[ext_resource type="Texture2D" uid="uid://3iqux3q4bpls" path="res://ore-lead3.png" id="9_hwhg7"]
+[ext_resource type="Texture2D" uid="uid://cvj37s6408vbd" path="res://ore-scrap1.png" id="10_hotmt"]
+[ext_resource type="Texture2D" uid="uid://dhkuilsdafwao" path="res://ore-scrap2.png" id="11_si66v"]
+[ext_resource type="Texture2D" uid="uid://ccj4o4ykpk0t1" path="res://ore-scrap3.png" id="12_3sbop"]
+[ext_resource type="Texture2D" uid="uid://dj5nch8u4ee05" path="res://ore-thorium1.png" id="13_dfnv3"]
+[ext_resource type="Texture2D" uid="uid://ben84lqe4qvfg" path="res://ore-thorium2.png" id="14_wg30c"]
+[ext_resource type="Texture2D" uid="uid://dya6pqwqru635" path="res://ore-thorium3.png" id="15_76ywg"]
+[ext_resource type="Texture2D" uid="uid://b4y5x3bh5j00g" path="res://ore-titanium1.png" id="16_jl08a"]
+[ext_resource type="Texture2D" uid="uid://dsilxkvie3ufr" path="res://ore-titanium2.png" id="17_ifgu7"]
+[ext_resource type="Texture2D" uid="uid://be5umvssbwu0e" path="res://ore-titanium3.png" id="18_cm785"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fmyg5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rdkiy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jjbl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6dpa2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7mdbo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7t4pu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3wk6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_huvdv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ex8rw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_y52do")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_55i28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hwhg7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1p2v1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_hotmt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_si66v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_3sbop")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s7mk8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_dfnv3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_wg30c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_76ywg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wh2uw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_jl08a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ifgu7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_cm785")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="TileSet" id="TileSet_jjbl4"]
+tile_size = Vector2i(32, 32)
+
+[node name="Ore-Handler" type="Node2D"]
+script = ExtResource("1_jjbl4")
+
+[node name="Carvão" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-5, 28)
+sprite_frames = SubResource("SpriteFrames_fmyg5")
+frame_progress = 0.228183
+
+[node name="Cobre" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(44, 4)
+sprite_frames = SubResource("SpriteFrames_7mdbo")
+frame_progress = 0.675552
+
+[node name="Chumbo" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(12, -40)
+sprite_frames = SubResource("SpriteFrames_ex8rw")
+frame_progress = 0.943006
+
+[node name="Sucata" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-20, -44)
+sprite_frames = SubResource("SpriteFrames_1p2v1")
+frame_progress = 0.717216
+
+[node name="Thorium" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-54, -23)
+sprite_frames = SubResource("SpriteFrames_s7mk8")
+frame_progress = 0.409861
+
+[node name="Titanio" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-52, 35)
+sprite_frames = SubResource("SpriteFrames_wh2uw")
+frame_progress = 0.0134732
+
+[node name="TileExemplo" type="TileMapLayer" parent="."]
+z_index = 1
+tile_set = SubResource("TileSet_jjbl4")
+
+[node name="SLAKARAI" type="Node2D" parent="."]
+z_index = 1

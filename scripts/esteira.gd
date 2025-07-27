@@ -146,6 +146,7 @@ func decidir_sprite() -> void:
 			ConfirmarBaixo = true
 		else:
 			ConfirmarBaixo = false
+	
 	EsteiraAtual.visible = false
 	
 	if LadoDaFrente == Vector2.RIGHT:

@@ -171,7 +171,7 @@ flip_v = true
 visible = false
 position = Vector2(-16, -16)
 sprite_frames = SubResource("SpriteFrames_aa170")
-frame_progress = 0.806547
+frame_progress = 0.205781
 centered = false
 flip_h = true
 
@@ -189,7 +189,7 @@ visible = false
 position = Vector2(-16, 16)
 rotation = 4.71239
 sprite_frames = SubResource("SpriteFrames_aa170")
-frame_progress = 0.702178
+frame_progress = 0.531936
 centered = false
 flip_h = true
 
@@ -250,7 +250,7 @@ flip_v = true
 visible = false
 position = Vector2(-16, -16)
 sprite_frames = SubResource("SpriteFrames_onpw7")
-frame_progress = 0.700412
+frame_progress = 0.699011
 centered = false
 flip_v = true
 
@@ -294,21 +294,21 @@ flip_v = true
 visible = false
 position = Vector2(-16, -16)
 sprite_frames = SubResource("SpriteFrames_3e0nq")
-frame_progress = 0.30568
+frame_progress = 0.183478
 centered = false
 
 [node name="RightUpDown-Left" type="AnimatedSprite2D" parent="ESTEIRA2"]
 visible = false
 position = Vector2(-16, -16)
 sprite_frames = SubResource("SpriteFrames_3e0nq")
-frame_progress = 0.794438
+frame_progress = 0.0381516
 centered = false
 
 [node name="RightLeftUp-Down" type="AnimatedSprite2D" parent="ESTEIRA2"]
 visible = false
 position = Vector2(-16, -16)
 sprite_frames = SubResource("SpriteFrames_3e0nq")
-frame_progress = 0.0807776
+frame_progress = 0.931019
 centered = false
 
 [node name="RightLeftDown-Up" type="AnimatedSprite2D" parent="ESTEIRA2"]
@@ -325,7 +325,4 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_2kasd")
 frame_progress = 0.934086
 
-[node name="cantos" type="Node2D" parent="."]
-visible = false
-
-[node name="4" type="Node2D" parent="cantos"]
+[node name="Junction" type="Node2D" parent="."]

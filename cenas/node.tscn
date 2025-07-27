@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d2qsywrldln5o"]
+[gd_scene load_steps=23 format=3 uid="uid://d2qsywrldln5o"]
 
 [ext_resource type="Script" uid="uid://cvdkora60dfn" path="res://scripts/node.gd" id="1_p2n4s"]
 [ext_resource type="Script" uid="uid://5s0vtke0e1yn" path="res://scripts/general_information.gd" id="2_pj3ui"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://xeggc1yfwhry" path="res://assets/bacakground or beauty shit/spritesheet.png" id="8_c7fnt"]
 [ext_resource type="Texture2D" uid="uid://bk7isa7rya2l6" path="res://assets/useful shit/spritesheet.png" id="9_51p24"]
 [ext_resource type="Script" uid="uid://bu80v3b0i44ei" path="res://scripts/player.gd" id="10_ux7ig"]
+[ext_resource type="PackedScene" uid="uid://pe28iop3ays1" path="res://ores.tscn" id="11_47nsi"]
 [ext_resource type="Texture2D" uid="uid://djealfjxhna4o" path="res://assets/useful shit/player.png" id="11_dw17u"]
 [ext_resource type="Script" uid="uid://b0basbxt664u0" path="res://scripts/construir.gd" id="12_d7cqa"]
 
@@ -146,10 +147,11 @@ script = ExtResource("3_47nsi")
 [node name="Node" type="Node" parent="."]
 script = ExtResource("4_pj3ui")
 
-[node name="Estruturas" type="Node" parent="."]
-
-[node name="Ghosting" type="Node2D" parent="Estruturas"]
+[node name="Ghosting" type="Node2D" parent="."]
 z_index = 5
+
+[node name="Estruturas" type="Node2D" parent="."]
+z_index = 2
 
 [node name="musicas" type="Node" parent="."]
 script = ExtResource("4_0f7rm")
@@ -181,7 +183,7 @@ libraries = {
 z_index = -1
 tile_set = SubResource("TileSet_bss38")
 
-[node name="Mid TileMap" type="TileMapLayer" parent="Tiles"]
+[node name="Ore TileMap" type="TileMapLayer" parent="Tiles"]
 z_index = 1
 tile_map_data = PackedByteArray(0, 0, 247, 255, 2, 0, 1, 0, 6, 0, 2, 0, 0, 0, 248, 255, 2, 0, 1, 0, 6, 0, 2, 0, 0, 0, 249, 255, 2, 0, 1, 0, 6, 0, 2, 0, 0, 0, 250, 255, 2, 0, 1, 0, 6, 0, 2, 0, 0, 0)
 tile_set = SubResource("TileSet_tda05")
@@ -191,8 +193,10 @@ z_index = 2
 tile_map_data = PackedByteArray(0, 0, 247, 255, 2, 0, 1, 0, 6, 0, 2, 0, 0, 0, 248, 255, 2, 0, 1, 0, 6, 0, 2, 0, 0, 0, 249, 255, 2, 0, 1, 0, 6, 0, 2, 0, 0, 0, 250, 255, 2, 0, 1, 0, 6, 0, 2, 0, 0, 0)
 tile_set = SubResource("TileSet_tda05")
 
-[node name="Top TileMap" type="TileMapLayer" parent="Tiles"]
+[node name="Decoration TileMap" type="TileMapLayer" parent="Tiles"]
 z_index = 4
+
+[node name="Ore-Handler" parent="Tiles" instance=ExtResource("11_47nsi")]
 
 [node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("10_ux7ig")
@@ -216,6 +220,8 @@ shape = SubResource("RectangleShape2D_bss38")
 [node name="ComponenteDeConstrução" type="Node2D" parent="Player"]
 unique_name_in_owner = true
 script = ExtResource("12_d7cqa")
+
+[node name="ComponenteDeAtaque" type="Node2D" parent="Player"]
 
 [node name="Label" type="Label" parent="."]
 offset_left = -30.0

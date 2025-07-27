@@ -11,19 +11,12 @@ var ghost
 var Rotação:int 
 var PosDoTemp:Vector2
 
-
-
-
-
-
-const CaminhoDosGhost:String = '../../Estruturas/Ghosting'
+const CaminhoDosGhost:String = '../../Ghosting'
 const CaminhoDasEstruturas:String = '../../Estruturas/'
 
-var Inspecionar:Dictionary = {
+const Inspecionar:Dictionary = {
 	'id': -1
 }
-
-
 
 var MouseAntigo
 var MouseNovo
@@ -67,7 +60,12 @@ func handle_click() -> void:
 	else:
 		print('fudeu2')
 
-
+func handle_replacement() -> void:
+	for node:Bloco in get_node(CaminhoDasEstruturas).get_children():
+		if PosDoMouseNaGrid in node.pegar_Id():
+			node.deletar()
+			spawnar_bloco()
+			
 func spawnar_bloco() -> void:
 	item = Escolha['cena'].instantiate()
 	item.atualizar_id(temp)
@@ -81,10 +79,13 @@ func spawnar_bloco() -> void:
 		GeneralInformation.reescrever(MapaDaGrid)
 		item.identificar_lados()
 		item.arrow.visible = false
-		
+	
 	if item.has_method('começar_animação'):
 		item.começar_animação()
-	
+		item.descobrir_dados(Escolha)
+		item.verificar_minerios()
+		
+		
 func Atualizar_Ghost() -> void:
 	for node:Node2D in get_node(CaminhoDosGhost).get_children():
 		if node.has_method('rotacionar_ghost'):
@@ -102,6 +103,7 @@ func limpar_baguios() -> void:
 func spawnar_ghost() -> void:
 	if Escolha == Inspecionar:
 		return
+		
 	print('teste1')
 	ghost = Escolha['cena'].instantiate()
 	if not get_node(CaminhoDosGhost).get_children():
@@ -119,9 +121,14 @@ func _process(delta: float) -> void:
 	
 func _physics_process(delta: float) -> void:
 	#print('PosDoMouseNaGrid',PosDoMouseNaGrid,'PosDoTemp', PosDoTemp)
-	if Input.is_action_pressed('m1'):
+	if Input.is_action_just_pressed('m1'):
 		if Escolha != Inspecionar:
-			if not MapaDaGrid.has(PosDoMouseNaGrid):
+			if MapaDaGrid.has(PosDoMouseNaGrid):
+				if MapaDaGrid[PosDoMouseNaGrid]['tipo_de_bloco'] == 'Esteira':
+					handle_replacement()
+				else:
+					print('ja tem baguio')
+			else:
 				handle_click()
 		else:
 			print('posição do mouse: ', PosDoMouseNaGrid)

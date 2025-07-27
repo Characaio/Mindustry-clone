@@ -11,8 +11,12 @@ func pegar_Id() -> Array[Vector2]:
 	
 func verificar(posi) -> bool:
 	if posi in Id:
+		
 		return true
 	return false
 	
 func deletar() -> void:
 	queue_free()
+	for item in Id:
+		GeneralInformation.deletar_item_da_grid(item)
+	
