@@ -44,26 +44,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2kasd"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_dq3x7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_popdw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_tk2ss")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_gcdqb")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_aa170"]
 animations = [{
 "frames": [{
@@ -78,26 +58,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("22_ebfen")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_onpw7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("15_ejuyh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_us0pv")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_6insl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_tvl3u")
 }],
 "loop": true,
 "name": &"default",
@@ -124,8 +84,49 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Esteira" type="Node2D" node_paths=PackedStringArray("up_right", "up_left", "down_right", "down_left", "left_down", "left_up", "right_down", "right_up", "left_up_down", "left_down_right", "left_down_up", "left_up_right", "right_down_left", "right_up_left", "right_down_up", "right_up_down", "left_up_down_right", "right_up_down_left", "right_left_up_down", "right_left_down_up", "convey")]
+[sub_resource type="SpriteFrames" id="SpriteFrames_onpw7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_ejuyh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_us0pv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_6insl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_tvl3u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2kasd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_dq3x7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_popdw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tk2ss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gcdqb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Esteira" type="Node2D" node_paths=PackedStringArray("conveyor0", "up_right", "up_left", "down_right", "down_left", "left_down", "left_up", "right_down", "right_up", "left_down_right", "left_up_down", "left_down_up", "left_up_right", "right_down_left", "right_up_left", "right_down_up", "right_up_down", "left_up_down_right", "right_up_down_left", "right_left_up_down", "right_left_down_up")]
 script = ExtResource("1_ls025")
+conveyor0 = NodePath("conveyor0")
 up_right = NodePath("EsteiraPadrão/ESTEIRA1/Up-Right")
 up_left = NodePath("EsteiraPadrão/ESTEIRA1/Up-Left")
 down_right = NodePath("EsteiraPadrão/ESTEIRA1/Down-Right")
@@ -134,8 +135,8 @@ left_down = NodePath("EsteiraPadrão/ESTEIRA1/Left-Down")
 left_up = NodePath("EsteiraPadrão/ESTEIRA1/Left-Up")
 right_down = NodePath("EsteiraPadrão/ESTEIRA1/Right-Down")
 right_up = NodePath("EsteiraPadrão/ESTEIRA1/Right-Up")
-left_up_down = NodePath("EsteiraPadrão/ESTEIRA3/LeftUp-Down")
 left_down_right = NodePath("EsteiraPadrão/ESTEIRA3/LeftDown-Right")
+left_up_down = NodePath("EsteiraPadrão/ESTEIRA3/LeftUp-Down")
 left_down_up = NodePath("EsteiraPadrão/ESTEIRA3/LeftDown-Up")
 left_up_right = NodePath("EsteiraPadrão/ESTEIRA3/LeftUp-Right")
 right_down_left = NodePath("EsteiraPadrão/ESTEIRA3/RightDown-Left")
@@ -146,7 +147,6 @@ left_up_down_right = NodePath("EsteiraPadrão/ESTEIRA2/LeftUpDown-Right")
 right_up_down_left = NodePath("EsteiraPadrão/ESTEIRA2/RightUpDown-Left")
 right_left_up_down = NodePath("EsteiraPadrão/ESTEIRA2/RightLeftUp-Down")
 right_left_down_up = NodePath("EsteiraPadrão/ESTEIRA2/RightLeftDown-Up")
-convey = NodePath("EsteiraPadrão/CONVEY")
 
 [node name="Conveyor" type="Sprite2D" parent="."]
 visible = false
@@ -156,6 +156,7 @@ texture = ExtResource("1_hhedt")
 centered = false
 
 [node name="conveyor0" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(-16, -16)
 sprite_frames = SubResource("SpriteFrames_ltxd1")
 frame = 3
@@ -174,11 +175,6 @@ texture = ExtResource("23_uf5y4")
 [node name="Junction" type="Node2D" parent="."]
 
 [node name="EsteiraPadrão" type="Node2D" parent="."]
-
-[node name="CONVEY" type="AnimatedSprite2D" parent="EsteiraPadrão"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_2kasd")
-frame_progress = 0.83302
 
 [node name="ESTEIRA1" type="Node2D" parent="EsteiraPadrão"]
 
@@ -250,81 +246,13 @@ frame_progress = 0.717948
 centered = false
 flip_h = true
 
-[node name="ESTEIRA3" type="Node2D" parent="EsteiraPadrão"]
-
-[node name="LeftDown-Right" type="AnimatedSprite2D" parent="EsteiraPadrão/ESTEIRA3"]
-visible = false
-position = Vector2(-16, -16)
-sprite_frames = SubResource("SpriteFrames_onpw7")
-frame_progress = 0.789191
-centered = false
-
-[node name="LeftUp-Down" type="AnimatedSprite2D" parent="EsteiraPadrão/ESTEIRA3"]
-visible = false
-position = Vector2(16, -16)
-rotation = 1.5708
-sprite_frames = SubResource("SpriteFrames_onpw7")
-frame_progress = 0.881894
-centered = false
-
-[node name="LeftDown-Up" type="AnimatedSprite2D" parent="EsteiraPadrão/ESTEIRA3"]
-visible = false
-position = Vector2(-16, 16)
-rotation = -1.5708
-sprite_frames = SubResource("SpriteFrames_onpw7")
-frame_progress = 0.969962
-centered = false
-flip_v = true
-
-[node name="LeftUp-Right" type="AnimatedSprite2D" parent="EsteiraPadrão/ESTEIRA3"]
-visible = false
-position = Vector2(-16, -16)
-sprite_frames = SubResource("SpriteFrames_onpw7")
-frame_progress = 0.797382
-centered = false
-flip_v = true
-
-[node name="RightDown-Left" type="AnimatedSprite2D" parent="EsteiraPadrão/ESTEIRA3"]
-visible = false
-position = Vector2(16, 16)
-rotation = 3.14159
-sprite_frames = SubResource("SpriteFrames_onpw7")
-frame_progress = 0.226578
-centered = false
-flip_v = true
-
-[node name="RightUp-Left" type="AnimatedSprite2D" parent="EsteiraPadrão/ESTEIRA3"]
-visible = false
-position = Vector2(16, 16)
-rotation = 3.14159
-sprite_frames = SubResource("SpriteFrames_onpw7")
-frame_progress = 0.651742
-centered = false
-
-[node name="RightDown-Up" type="AnimatedSprite2D" parent="EsteiraPadrão/ESTEIRA3"]
-visible = false
-position = Vector2(-16, 16)
-rotation = -1.5708
-sprite_frames = SubResource("SpriteFrames_onpw7")
-frame_progress = 0.715766
-centered = false
-
-[node name="RightUp-Down" type="AnimatedSprite2D" parent="EsteiraPadrão/ESTEIRA3"]
-visible = false
-position = Vector2(16, -16)
-rotation = 1.5708
-sprite_frames = SubResource("SpriteFrames_onpw7")
-frame_progress = 0.926869
-centered = false
-flip_v = true
-
 [node name="ESTEIRA2" type="Node2D" parent="EsteiraPadrão"]
 
 [node name="LeftUpDown-Right" type="AnimatedSprite2D" parent="EsteiraPadrão/ESTEIRA2"]
 visible = false
 position = Vector2(-16, -16)
 sprite_frames = SubResource("SpriteFrames_3e0nq")
-frame_progress = 0.937519
+frame_progress = 0.183478
 centered = false
 
 [node name="RightUpDown-Left" type="AnimatedSprite2D" parent="EsteiraPadrão/ESTEIRA2"]
@@ -347,3 +275,76 @@ position = Vector2(-16, -16)
 sprite_frames = SubResource("SpriteFrames_3e0nq")
 frame_progress = 0.970916
 centered = false
+
+[node name="ESTEIRA3" type="Node2D" parent="EsteiraPadrão"]
+
+[node name="LeftDown-Right" type="AnimatedSprite2D" parent="EsteiraPadrão/ESTEIRA3"]
+visible = false
+position = Vector2(-16, -16)
+sprite_frames = SubResource("SpriteFrames_onpw7")
+frame_progress = 0.0565635
+centered = false
+
+[node name="LeftUp-Down" type="AnimatedSprite2D" parent="EsteiraPadrão/ESTEIRA3"]
+visible = false
+position = Vector2(16, -16)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_onpw7")
+frame_progress = 0.0550149
+centered = false
+
+[node name="LeftDown-Up" type="AnimatedSprite2D" parent="EsteiraPadrão/ESTEIRA3"]
+visible = false
+position = Vector2(-16, 16)
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_onpw7")
+frame_progress = 0.431847
+centered = false
+flip_v = true
+
+[node name="LeftUp-Right" type="AnimatedSprite2D" parent="EsteiraPadrão/ESTEIRA3"]
+visible = false
+position = Vector2(-16, -16)
+sprite_frames = SubResource("SpriteFrames_onpw7")
+frame_progress = 0.699011
+centered = false
+flip_v = true
+
+[node name="RightDown-Left" type="AnimatedSprite2D" parent="EsteiraPadrão/ESTEIRA3"]
+visible = false
+position = Vector2(16, 16)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_onpw7")
+frame_progress = 0.107479
+centered = false
+flip_v = true
+
+[node name="RightUp-Left" type="AnimatedSprite2D" parent="EsteiraPadrão/ESTEIRA3"]
+visible = false
+position = Vector2(16, 16)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_onpw7")
+frame_progress = 0.871362
+centered = false
+
+[node name="RightDown-Up" type="AnimatedSprite2D" parent="EsteiraPadrão/ESTEIRA3"]
+visible = false
+position = Vector2(-16, 16)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_onpw7")
+frame_progress = 0.51886
+centered = false
+
+[node name="RightUp-Down" type="AnimatedSprite2D" parent="EsteiraPadrão/ESTEIRA3"]
+visible = false
+position = Vector2(16, -16)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_onpw7")
+frame_progress = 0.926869
+centered = false
+flip_v = true
+
+[node name="CONVEY" type="AnimatedSprite2D" parent="EsteiraPadrão"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_2kasd")
+frame_progress = 0.934086

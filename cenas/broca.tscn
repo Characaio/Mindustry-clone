@@ -44,8 +44,10 @@ _data = {
 &"rotação": SubResource("Animation_762gi")
 }
 
-[node name="Broca" type="Node2D"]
+[node name="Broca" type="Node2D" node_paths=PackedStringArray("animação_da_rotação", "identificador_de_minerio")]
 script = ExtResource("1_2lbec")
+"animação_da_rotação" = NodePath("AnimationPlayer")
+identificador_de_minerio = NodePath("Mechanical-drill-top-2")
 
 [node name="Mechanical-drill" type="Sprite2D" parent="."]
 position = Vector2(16, 16)
@@ -78,3 +80,7 @@ offset_left = -30.0
 offset_top = -62.0
 offset_right = 26.0
 offset_bottom = -39.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

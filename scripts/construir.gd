@@ -29,7 +29,7 @@ func teste() -> void:
 	print('teste')
 
 var temp:Array[Vector2]
-var chilling:bool = true
+var chilling:bool = false
 var PosDaCelulaGlobal:Vector2
 var PosDaCelulaLocal:Vector2
 
@@ -47,6 +47,17 @@ func handle_click() -> void:
 			else:
 				PosDaCelulaGlobal = PosDoMouseNaGrid + PosDaCelulaLocal
 			temp.append(PosDaCelulaGlobal)
+			
+			if Escolha['tipo_de_bloco'] == 'Broca':
+				for chave in temp:
+					if not chilling:
+						if GeneralInformation.pegar_grid_dos_ores().has(chave):
+							chilling = true
+						else:
+							chilling = false
+			else:
+				chilling = true
+				
 			if MapaDaGrid.has(PosDaCelulaGlobal):
 				print('fudeu1')
 				if MapaDaGrid[PosDaCelulaGlobal]['tipo_de_bloco'] != 'Esteira':
@@ -58,13 +69,17 @@ func handle_click() -> void:
 		spawnar_bloco()
 		
 	else:
+		for node:Node2D in get_node(CaminhoDosGhost).get_children():
+			node.modulate = Color.from_rgba8(255,140,125,125)
+			
 		print('fudeu2')
 
 func handle_replacement() -> void:
 	for node:Bloco in get_node(CaminhoDasEstruturas).get_children():
 		if PosDoMouseNaGrid in node.pegar_Id():
 			node.deletar()
-			spawnar_bloco()
+			handle_click()
+			
 			
 func spawnar_bloco() -> void:
 	item = Escolha['cena'].instantiate()
@@ -74,6 +89,9 @@ func spawnar_bloco() -> void:
 	get_node(CaminhoDasEstruturas).add_child(item)
 	
 	if item.has_method('identificar_lados'):
+		print('Mapa da grid: ', MapaDaGrid)
+		print('PosMouse: ', PosDoMouseNaGrid)
+		#print("Especifico: ",MapaDaGrid[PosDoMouseNaGrid])
 		MapaDaGrid[PosDoMouseNaGrid]['direção'] = Rotação
 		item.rotação = Rotação
 		GeneralInformation.reescrever(MapaDaGrid)
@@ -90,7 +108,6 @@ func Atualizar_Ghost() -> void:
 	for node:Node2D in get_node(CaminhoDosGhost).get_children():
 		if node.has_method('rotacionar_ghost'):
 			node.rotacionar_ghost(Rotação)
-		#print('direçãozinha: ', node.rotation_degrees, '\nRotação: ', Rotação)
 		node.position = player_tile_map.map_to_local(PosDoMouseNaGrid)
 		
 		

@@ -4,34 +4,32 @@ class_name esteira
 
 @onready var esteira_root: esteira = $"."
 
-@onready var up_right: AnimatedSprite2D = $"ESTEIRA4/Up-Right"
-@onready var up_left: AnimatedSprite2D = $"ESTEIRA4/Up-Left"
-@onready var down_right: AnimatedSprite2D = $"ESTEIRA4/Down-Right"
-@onready var down_left: AnimatedSprite2D = $"ESTEIRA4/Down-Left"
-@onready var left_down: AnimatedSprite2D = $"ESTEIRA4/Left-Down"
-@onready var left_up: AnimatedSprite2D = $"ESTEIRA4/Left-Up"
-@onready var right_down: AnimatedSprite2D = $"ESTEIRA4/Right-Down"
-@onready var right_up: AnimatedSprite2D = $"ESTEIRA4/Right-Up"
+
+@export var up_right: AnimatedSprite2D
+@export var up_left: AnimatedSprite2D
+@export var down_right: AnimatedSprite2D
+@export var down_left: AnimatedSprite2D
+@export var left_down: AnimatedSprite2D
+@export var left_up: AnimatedSprite2D
+@export var right_down: AnimatedSprite2D
+@export var right_up: AnimatedSprite2D
+
+@export var left_up_down: AnimatedSprite2D
+@export var left_down_right: AnimatedSprite2D
+@export var left_down_up: AnimatedSprite2D
+@export var left_up_right: AnimatedSprite2D
+@export var right_down_left: AnimatedSprite2D
+@export var right_up_left: AnimatedSprite2D
+@export var right_down_up: AnimatedSprite2D
+@export var right_up_down: AnimatedSprite2D
 
 
+@export var left_up_down_right: AnimatedSprite2D
+@export var right_up_down_left: AnimatedSprite2D
+@export var right_left_up_down: AnimatedSprite2D
+@export var right_left_down_up: AnimatedSprite2D
 
-@onready var left_down_right: AnimatedSprite2D = $"ESTEIRA3/LeftDown-Right"
-@onready var left_up_down: AnimatedSprite2D = $"ESTEIRA3/LeftUp-Down"
-@onready var left_down_up: AnimatedSprite2D = $"ESTEIRA3/LeftDown-Up"
-@onready var left_up_right: AnimatedSprite2D = $"ESTEIRA3/LeftUp-Right"
-@onready var right_down_left: AnimatedSprite2D = $"ESTEIRA3/RightDown-Left"
-@onready var right_up_left: AnimatedSprite2D = $"ESTEIRA3/RightUp-Left"
-@onready var right_down_up: AnimatedSprite2D = $"ESTEIRA3/RightDown-Up"
-@onready var right_up_down: AnimatedSprite2D = $"ESTEIRA3/RightUp-Down"
-
-
-@onready var left_up_down_right: AnimatedSprite2D = $"ESTEIRA2/LeftUpDown-Right"
-@onready var right_up_down_left: AnimatedSprite2D = $"ESTEIRA2/RightUpDown-Left"
-@onready var right_left_up_down: AnimatedSprite2D = $"ESTEIRA2/RightLeftUp-Down"
-@onready var right_left_down_up: AnimatedSprite2D = $"ESTEIRA2/RightLeftDown-Up"
-
-@onready var convey: AnimatedSprite2D = $ESTEIRA1/CONVEY
-
+@export var convey: AnimatedSprite2D
 
 
 
@@ -73,7 +71,7 @@ var Esteira:Dictionary
 var PosDoMouseNaGrid: Vector2
 var MapaDaGrid:Dictionary
 
-func _ready() -> void:
+func criar_informações_base() -> void:
 	EsteiraAtual = conveyor_0
 	PosDoMouseNaGrid = GeneralInformation.pegar_mouse()
 	cima = PosDoMouseNaGrid + Vector2.UP
@@ -82,6 +80,9 @@ func _ready() -> void:
 	esquerda = PosDoMouseNaGrid + Vector2.LEFT
 	Id = pegar_Id()
 	direções = [cima,baixo,direita,esquerda]
+	
+func _ready() -> void:
+	criar_informações_base()
 
 var updated:bool
 
@@ -95,6 +96,7 @@ func _process(delta: float) -> void:
 	if not SouGhost:
 		EsteiraAtual.frame = FrameHandler.pegar_frame_atual()
 		decidir_sprite()
+	
 	
 func decidir_lados() -> void:
 	if rotation_degrees == 0:#apontado para direita
@@ -119,30 +121,33 @@ var ConfirmarEsquerda:bool
 var ConfirmarCima:bool
 var ConfirmarBaixo:bool
 
+func posição_valida(Direção:Vector2,valor) -> bool:
+	return true if MapaDaGrid[Direção]['direção'] == valor else false
 	
 func decidir_sprite() -> void:
 	#verificar_vizinhos()
 	decidir_lados()
 	
 	if MapaDaGrid.has(esquerda):
-		if MapaDaGrid[esquerda]['direção'] == 0:
+		if posição_valida(esquerda,0):
 			ConfirmarEsquerda = true
 		else:
 			ConfirmarEsquerda = false
 	if MapaDaGrid.has(cima):
-		if MapaDaGrid[cima]['direção'] == 90:
+
+		if posição_valida(cima,90):
 			ConfirmarCima = true
 		else:
 			ConfirmarCima = false
 	
 	if MapaDaGrid.has(direita):
-		if MapaDaGrid[direita]['direção'] == 180:
+		if posição_valida(direita,180):
 			ConfirmarDireita = true
 		else:
 			ConfirmarDireita = false
 			
 	if MapaDaGrid.has(baixo):
-		if MapaDaGrid[baixo]['direção'] == 270:
+		if posição_valida(baixo,270):
 			ConfirmarBaixo = true
 		else:
 			ConfirmarBaixo = false
@@ -221,7 +226,12 @@ func decidir_sprite() -> void:
 		elif ConfirmarDireita:
 			rotation_degrees = 0
 			EsteiraAtual = right_down
-
+	
+	print('Lado da frente ', LadoDaFrente)
+	print('direita',ConfirmarDireita)
+	print('esquerda',ConfirmarEsquerda)
+	print('cima',ConfirmarCima)
+	print('baixo',ConfirmarBaixo)
 	EsteiraAtual.visible = true
 
 var direções:Array[Vector2]

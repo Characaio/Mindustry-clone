@@ -19,15 +19,17 @@ var sprite:AnimatedSprite2D
 
 func colocar_minerios() -> void:
 	
-	posição = Vector2(randi_range(0,10),randi_range(0,10))
-	MinerioEscolhido = Minerios.duplicate(true).pick_random()
-	sprite = MinerioEscolhido['Sprites'].duplicate()
-	sprite.position = tile_exemplo.map_to_local(posição)
-	sprite.frame = randi_range(0,2)
-	sprite.visible = true
-	print(posição)
-	get_node("SLAKARAI").add_child(sprite)
-	GeneralInformation.colocar_minerios(posição,MinerioEscolhido)
+	posição = Vector2(randi_range(0,15),randi_range(0,15))
+	if not GeneralInformation.pegar_grid_dos_ores().has(posição):
+		MinerioEscolhido = Minerios.duplicate(true).pick_random()
+		sprite = MinerioEscolhido['Sprites'].duplicate()
+		sprite.position = tile_exemplo.map_to_local(posição)
+		sprite.frame = randi_range(0,2)
+		sprite.visible = true
+		print(posição)
+		
+		get_node("SLAKARAI").add_child(sprite)
+		GeneralInformation.colocar_minerios(posição,MinerioEscolhido)
 	
 
 
@@ -44,5 +46,5 @@ func _ready() -> void:
 	Ore.criar_minerios()
 	
 	Minerios = Ore.pegar_minerios()
-	for i in range(20):
+	for i in range(40):
 		colocar_minerios()
