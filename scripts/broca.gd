@@ -23,23 +23,82 @@ var dados: Dictionary
 var VelocidadeBase:float
 var Cores:Array[Color]
 var Ghost:bool = true
+var Interagiveis:Array[String] = ['Esteira','Nucleo']
 
 func _process(delta: float) -> void:
 	if timer.time_left <= 0 and not Ghost:
 		print('Iniciei um timer')
-		
-		
 		timer.start(1)
+		
 func _ready() -> void: 
 	identificador_de_minerio.modulate = Color.from_rgba8(201,165,143)
 
-func minerar_minerio():
-	VelocidadeTotal = VelocidadeBase * Quantidade
+#Id: [(5.0, 11.0), (5.0, 12.0),
+#	  (6.0, 11.0), (6.0, 12.0)]
+#\\(4.0, 10.0)
+#(4.0, 11.0)
+#(4.0, 12.0)
+#(5.0, 10.0)
+#\\(5.0, 11.0)
+#\\(5.0, 12.0)
+#(6.0, 10.0)
+#\\(6.0, 11.0)
+#\\(6.0, 12.0)
+#(4.0, 11.0)
+#(4.0, 12.0)
+#(4.0, 13.0)
+#(5.0, 11.0)
+#(5.0, 12.0)
+#(5.0, 13.0)
+#(6.0, 11.0)
+#(6.0, 12.0)
+#(6.0, 13.0)
+#(5.0, 10.0)
+#(5.0, 11.0)
+#(5.0, 12.0)
+#(6.0, 10.0)
+#(6.0, 11.0)
+#(6.0, 12.0)
+#(7.0, 10.0)
+#(7.0, 11.0)
+#(7.0, 12.0)
+#(5.0, 11.0)
+#(5.0, 12.0)
+#(5.0, 13.0)
+#(6.0, 11.0)
+#(6.0, 12.0)
+#(6.0, 13.0)
+#(7.0, 11.0)
+#(7.0, 12.0)
+#(7.0, 13.0)
 
+func despejar_minerios() -> void:
+	var mapadagrid =  GeneralInformation.pegar_grid()
+	var Esteira:Array[Dictionary]
+	var EsteiraIds:Array[Vector2]
+	var novo:Vector2
+	
+	print('Id: ', Id)
+	for id in Id:
+		for x in range(-1,2):
+			for y in range(-1,2):
+				novo = id + Vector2(x,y)
+				print(novo)
+				if mapadagrid.has(novo):
+					if mapadagrid[novo]['tipo_de_bloco'] in Interagiveis:
+						EsteiraIds.append(novo)
+	
+	#print('ID das esteiras: ', EsteiraIds)
+	for i in range(EsteiraIds.size()):
+		#print('Id De Esteira: ', i)
+		novo = EsteiraIds[i]
+		#print('bloco em: ',novo, mapadagrid[novo])
+		GeneralInformation.mudar_item_especifico(novo,'estoque_da_esteira','+1')
 var Informação:String
 var melhor_prioridade = -1
 var melhor_minerio 
 var values:Array
+
 func verificar_minerios() -> void:
 	melhor_prioridade = -1
 	melhor_minerio = ''
@@ -116,10 +175,11 @@ func começar_animação() -> void:
 func _on_timer_timeout() -> void:
 	MinerioMinerado += VelocidadeBase
 	#print('UI, AUMENTEI, UAU: ', MinerioMinerado)
-	if MinerioMinerado > 1:
+	while MinerioMinerado > 1:
 		#print('UI, minerei um ', melhor_minerio)
 		Estoque += 1
 		#print('Meu Estoque é: ', Estoque)
 		MinerioMinerado -= 1
 		Informação = str('Minerio: ',melhor_minerio, ' Quantidade: ',Quantidade, ' Estoque: ', Estoque)
 		label.text = Informação
+		despejar_minerios()

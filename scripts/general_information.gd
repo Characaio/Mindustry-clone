@@ -5,6 +5,7 @@ var MapaDaGrid:Dictionary
 var PosDoMouseNaGrid:Vector2
 var MapaDaGridOres:Dictionary
 
+
 func _ready() -> void:
 	pass
 
@@ -33,7 +34,12 @@ func colocar_minerios(chave:Vector2,valor:Dictionary) -> void:
 func deletar_item_da_grid(chave:Vector2) -> void:
 	MapaDaGrid.erase(chave)
 
-func mudar_grid(PosDoMouse,chave:Vector2,valor:Dictionary) -> void:
+func mudar_item_especifico(ChaveDaGrid:Vector2,ChaveInterna:String,valor:String) -> void:
+	if valor == '+1':
+		if MapaDaGrid[ChaveDaGrid][ChaveInterna] < MapaDaGrid[ChaveDaGrid]['limite_da_esteira']:
+			MapaDaGrid[ChaveDaGrid][ChaveInterna] += 1
+		else:
+			print("TO CHEIO CHEFE: ", ChaveDaGrid)
+func mudar_grid(chave:Vector2,valor:Dictionary) -> void:
 
 	MapaDaGrid[chave] = valor.duplicate(true)
-	atualizar_mouse(PosDoMouse)

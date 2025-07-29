@@ -227,11 +227,11 @@ func decidir_sprite() -> void:
 			rotation_degrees = 0
 			EsteiraAtual = right_down
 	
-	print('Lado da frente ', LadoDaFrente)
-	print('direita',ConfirmarDireita)
-	print('esquerda',ConfirmarEsquerda)
-	print('cima',ConfirmarCima)
-	print('baixo',ConfirmarBaixo)
+	#print('Lado da frente ', LadoDaFrente)
+	#print('direita',ConfirmarDireita)
+	#print('esquerda',ConfirmarEsquerda)
+	#print('cima',ConfirmarCima)
+	#print('baixo',ConfirmarBaixo)
 	EsteiraAtual.visible = true
 
 var direções:Array[Vector2]

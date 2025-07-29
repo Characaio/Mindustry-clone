@@ -28,7 +28,10 @@ const Esteira:Dictionary = {
 	'tamanhoy': 1,
 	'Rotacional': true,
 	'direção': 0,
-	'nome': 'Esteira'
+	'nome': 'Esteira',
+	'limite_da_esteira': 5,
+	'estoque_da_esteira': 0,
+	'velocidade_da_esteira': 2 #passsa 2 minerios por segundo
 }
 
 const Nucleo:Dictionary =  {

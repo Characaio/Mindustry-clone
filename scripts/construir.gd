@@ -64,7 +64,8 @@ func handle_click() -> void:
 					chilling = false
 	if chilling:
 		for chave in temp:
-			GeneralInformation.mudar_grid(PosDoMouseNaGrid,chave,Escolha)
+			GeneralInformation.mudar_grid(chave,Escolha)
+			GeneralInformation.atualizar_mouse(PosDoMouseNaGrid)
 		print('to zen')
 		spawnar_bloco()
 		
