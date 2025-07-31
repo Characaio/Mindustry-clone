@@ -26,7 +26,15 @@ var atlas_pos = Vector2i(4,1)
 
 func _ready() -> void:
 	
-
+	var noise = FastNoiseLite.new()
+	
+	noise.noise_type = FastNoiseLite.TYPE_PERLIN
+	noise.seed = randi() # Set a random seed
+	noise.frequency = 0.01
+	for i in range(10):
+		for j in range(10):
+			var valor = noise.get_noise_2d(i,j)
+			print('valor: ', valor)
 	var SlaKarai: Vector2i
 	for x in range(20):
 		for y in range(20):

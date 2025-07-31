@@ -1,10 +1,7 @@
 extends Bloco
 class_name esteira
 
-
 @onready var esteira_root: esteira = $"."
-
-
 @export var up_right: AnimatedSprite2D
 @export var up_left: AnimatedSprite2D
 @export var down_right: AnimatedSprite2D
@@ -13,7 +10,6 @@ class_name esteira
 @export var left_up: AnimatedSprite2D
 @export var right_down: AnimatedSprite2D
 @export var right_up: AnimatedSprite2D
-
 @export var left_up_down: AnimatedSprite2D
 @export var left_down_right: AnimatedSprite2D
 @export var left_down_up: AnimatedSprite2D
@@ -22,19 +18,11 @@ class_name esteira
 @export var right_up_left: AnimatedSprite2D
 @export var right_down_up: AnimatedSprite2D
 @export var right_up_down: AnimatedSprite2D
-
-
 @export var left_up_down_right: AnimatedSprite2D
 @export var right_up_down_left: AnimatedSprite2D
 @export var right_left_up_down: AnimatedSprite2D
 @export var right_left_down_up: AnimatedSprite2D
-
 @export var convey: AnimatedSprite2D
-
-
-
-
-
 @onready var conveyor: Sprite2D = $Conveyor
 @onready var conveyor_0: AnimatedSprite2D = $conveyor0
 @onready var conveyor_1: AnimatedSprite2D = $conveyor1
@@ -42,11 +30,12 @@ class_name esteira
 @onready var conveyor_3: AnimatedSprite2D = $conveyor3
 @onready var conveyor_4: AnimatedSprite2D = $conveyor4
 @onready var arrow: Sprite2D = $"Place-arrow"
+@onready var tempo_para_passar: Timer = $Tempo_para_passar
 
 var EsteiraAtual:AnimatedSprite2D
 
 var SouGhost:bool = true
-
+var VelocidadeDaEsteira:float
 var rotação:int
 var LadoDeTras:Vector2
 var LadoDaFrente:Vector2
@@ -70,6 +59,10 @@ var Esteira:Dictionary
 
 var PosDoMouseNaGrid: Vector2
 var MapaDaGrid:Dictionary
+var Estoque:Array
+var itens
+var progresso:float
+@onready var label: Label = $Label
 
 func criar_informações_base() -> void:
 	EsteiraAtual = conveyor_0
@@ -82,35 +75,53 @@ func criar_informações_base() -> void:
 	direções = [cima,baixo,direita,esquerda]
 	
 func _ready() -> void:
+	label.visible = false
 	criar_informações_base()
-
+	
+	
+var HalfStepOffset:Vector2
 var updated:bool
-
+@onready var item_sand: Sprite2D = $"Item-sand"
+var item:Sprite2D
+var coloquei:bool = false
 func _process(delta: float) -> void:
 	rotation_degrees = rotação
 	MapaDaGrid = GeneralInformation.pegar_grid()
 	PosDoMouseNaGrid = GeneralInformation.pegar_mouse()
+	
 	if MapaDaGrid.has(PosDoMouseNaGrid):
 		Esteira = MapaDaGrid[PosDoMouseNaGrid].duplicate(true)
 		Esteira['direção'] = rotação
+		
 	if not SouGhost:
-		EsteiraAtual.frame = FrameHandler.pegar_frame_atual()
+		EsteiraAtual.frame = FrameHandler.pegar_frame_atual_da_esteira()
 		decidir_sprite()
-	
+		Estoque = GeneralInformation.pegar_estoque(Id)
+		#print('Estoque AASS: ',Estoque)
+		MapaDaGrid[Id[0]]['estoque_da_esteira'] = Estoque
+		label.visible = true
+		label.text = str(Estoque)
+		
+func passar_item() -> void:
+	print('UI, passei o item pra algum lado')
 	
 func decidir_lados() -> void:
 	if rotation_degrees == 0:#apontado para direita
 		LadoDaFrente = Vector2.RIGHT
 		LadoDeTras = Vector2.LEFT
+		HalfStepOffset = Vector2(0,16)
 	if rotation_degrees == 90:#apontado para baixo
 		LadoDaFrente = Vector2.DOWN
 		LadoDeTras = Vector2.UP
+		HalfStepOffset = Vector2(16,0)
 	if rotation_degrees == 180:#apontado para esquerda
 		LadoDaFrente = Vector2.LEFT
 		LadoDeTras = Vector2.RIGHT
+		HalfStepOffset = Vector2(32,16)
 	if rotation_degrees == 270:#apontado para cima
 		LadoDaFrente = Vector2.UP
 		LadoDeTras = Vector2.DOWN
+		HalfStepOffset = Vector2(16,16)
 
 func rotacionar_ghost(dire) -> void:
 	rotação = dire
@@ -122,12 +133,14 @@ var ConfirmarCima:bool
 var ConfirmarBaixo:bool
 
 func posição_valida(Direção:Vector2,valor) -> bool:
-	return true if MapaDaGrid[Direção]['direção'] == valor else false
+	if MapaDaGrid[Direção]['direção'] == valor or MapaDaGrid[Direção]['tipo_de_bloco'] in Interagiveis:
+		return true 
+	return false
 	
 func decidir_sprite() -> void:
 	#verificar_vizinhos()
 	decidir_lados()
-	
+	FrameHandler.inicar_id(Id)
 	if MapaDaGrid.has(esquerda):
 		if posição_valida(esquerda,0):
 			ConfirmarEsquerda = true

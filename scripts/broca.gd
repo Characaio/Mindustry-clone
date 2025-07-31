@@ -16,7 +16,7 @@ var MinerioMinerado:float
 var info:Dictionary
 @onready var timer: Timer = $Timer
 
-var Estoque:int
+var Estoque:Array
 
 var dados: Dictionary
 
@@ -29,48 +29,11 @@ func _process(delta: float) -> void:
 	if timer.time_left <= 0 and not Ghost:
 		print('Iniciei um timer')
 		timer.start(1)
-		
+	
 func _ready() -> void: 
 	identificador_de_minerio.modulate = Color.from_rgba8(201,165,143)
 
-#Id: [(5.0, 11.0), (5.0, 12.0),
-#	  (6.0, 11.0), (6.0, 12.0)]
-#\\(4.0, 10.0)
-#(4.0, 11.0)
-#(4.0, 12.0)
-#(5.0, 10.0)
-#\\(5.0, 11.0)
-#\\(5.0, 12.0)
-#(6.0, 10.0)
-#\\(6.0, 11.0)
-#\\(6.0, 12.0)
-#(4.0, 11.0)
-#(4.0, 12.0)
-#(4.0, 13.0)
-#(5.0, 11.0)
-#(5.0, 12.0)
-#(5.0, 13.0)
-#(6.0, 11.0)
-#(6.0, 12.0)
-#(6.0, 13.0)
-#(5.0, 10.0)
-#(5.0, 11.0)
-#(5.0, 12.0)
-#(6.0, 10.0)
-#(6.0, 11.0)
-#(6.0, 12.0)
-#(7.0, 10.0)
-#(7.0, 11.0)
-#(7.0, 12.0)
-#(5.0, 11.0)
-#(5.0, 12.0)
-#(5.0, 13.0)
-#(6.0, 11.0)
-#(6.0, 12.0)
-#(6.0, 13.0)
-#(7.0, 11.0)
-#(7.0, 12.0)
-#(7.0, 13.0)
+
 
 func despejar_minerios() -> void:
 	var mapadagrid =  GeneralInformation.pegar_grid()
@@ -78,22 +41,35 @@ func despejar_minerios() -> void:
 	var EsteiraIds:Array[Vector2]
 	var novo:Vector2
 	
+	var Direções:Array[Vector2] = [
+		Vector2.LEFT,
+		Vector2.DOWN,
+		Vector2.UP,
+		Vector2.RIGHT
+	]
 	print('Id: ', Id)
 	for id in Id:
-		for x in range(-1,2):
-			for y in range(-1,2):
-				novo = id + Vector2(x,y)
-				print(novo)
+		#print('Id: ',id)
+		for dir in Direções:
+			novo = id + dir
+			if novo not in Id:
 				if mapadagrid.has(novo):
-					if mapadagrid[novo]['tipo_de_bloco'] in Interagiveis:
+					var grid = mapadagrid[novo]
+					if grid['tipo_de_bloco'] in Interagiveis and grid['estoque_da_esteira'].size() <  grid['limite_da_esteira']:
+						print("ta dboa, pode passar")
 						EsteiraIds.append(novo)
+					else:
+						print("vish karai, a esteira: ", novo, ' ta cheia, pode passar la nn mano')
 	
-	#print('ID das esteiras: ', EsteiraIds)
-	for i in range(EsteiraIds.size()):
-		#print('Id De Esteira: ', i)
-		novo = EsteiraIds[i]
-		#print('bloco em: ',novo, mapadagrid[novo])
-		GeneralInformation.mudar_item_especifico(novo,'estoque_da_esteira','+1')
+	print('ID das esteiras: ', EsteiraIds)
+	var aleatorio:Vector2 = EsteiraIds.pick_random()
+	print('Esteira escolhida esta no: ', aleatorio)
+	
+	GeneralInformation.mudar_item_especifico(aleatorio,'estoque_da_esteira',melhor_minerio)
+	Estoque.pop_back()
+	Informação = str('Minerio: ',melhor_minerio, ' Quantidade: ',Quantidade, ' Estoque: ', Estoque)
+	label.text = Informação
+	
 var Informação:String
 var melhor_prioridade = -1
 var melhor_minerio 
@@ -155,6 +131,7 @@ func verificar_minerios() -> void:
 			#print('OPA, AI É BRABO')
 			identificador_de_minerio.modulate = minerio['Cor']
 	VelocidadeBase *= Quantidade
+	
 func descobrir_dados(Escolha:Dictionary) -> void:
 	print('tamanhoX: ',Escolha['tamanhox'] )
 	print('tamanhoY: ',Escolha['tamanhoy'] )
@@ -163,7 +140,7 @@ func descobrir_dados(Escolha:Dictionary) -> void:
 	dados['Nome'] = Escolha['nome']
 
 	if dados['Nome'] == 'Broca':
-		VelocidadeBase = 0.09
+		VelocidadeBase = 0.10
 	if dados['Nome'] == 'Broca Pneumatica':
 		VelocidadeBase = 0.78
 	
@@ -176,9 +153,9 @@ func _on_timer_timeout() -> void:
 	MinerioMinerado += VelocidadeBase
 	#print('UI, AUMENTEI, UAU: ', MinerioMinerado)
 	while MinerioMinerado > 1:
-		#print('UI, minerei um ', melhor_minerio)
-		Estoque += 1
-		#print('Meu Estoque é: ', Estoque)
+		print('UI, minerei um ', melhor_minerio)
+		Estoque.append(melhor_minerio)
+		print('Meu Estoque é: ', Estoque)
 		MinerioMinerado -= 1
 		Informação = str('Minerio: ',melhor_minerio, ' Quantidade: ',Quantidade, ' Estoque: ', Estoque)
 		label.text = Informação

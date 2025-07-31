@@ -199,6 +199,7 @@ z_index = 4
 [node name="Ore-Handler" parent="Tiles" instance=ExtResource("11_47nsi")]
 
 [node name="Player" type="CharacterBody2D" parent="."]
+z_index = 3
 script = ExtResource("10_ux7ig")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

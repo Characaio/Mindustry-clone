@@ -15,7 +15,7 @@ var ThoriumSprite: AnimatedSprite2D
 var TitanioSprite: AnimatedSprite2D
 
 var Minerios: Array[Dictionary]
-
+var MineriosNomes: Array[String]
 func colocar_sprites(Sprites) -> void:
 	CarvãoSprite = Sprites['Carvão']
 	CobreSprite = Sprites['Cobre']
@@ -26,7 +26,8 @@ func colocar_sprites(Sprites) -> void:
 	
 func pegar_minerios() -> Array[Dictionary]:
 	return Minerios
-	
+func pegar_nome_de_minerios() -> Array[String]:
+	return MineriosNomes
 func criar_minerios() -> void:
 	Cobre = {
 	'Nome': 'Cobre',
@@ -71,3 +72,5 @@ func criar_minerios() -> void:
 	'Sprites': TitanioSprite
 	}
 	Minerios = [Cobre,Carvão,Chumbo,Sucata,Titanio,Thorium]
+	for minerio in Minerios:
+		MineriosNomes.append(minerio['Nome'])
