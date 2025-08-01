@@ -14,13 +14,6 @@ var id:Array[Vector2]
 
 func _process(delta: float) -> void:
 	delay_da_esteira += delta
-	if id:
-		VelocidadeDaEsteira = GeneralInformation.pegar_grid()[id[0]]['velocidade_da_esteira']
-		progresso = pegar_progresso(id)
-		if progresso < 1:
-			progresso += VelocidadeDaEsteira * delta
-		if progresso >= 1:
-			progresso = 0
 	#print('frame atual: ',FrameAtual)
 	if delay_da_esteira >= tempo_da_esteira:
 		delay_da_esteira = 0
@@ -30,8 +23,8 @@ func _process(delta: float) -> void:
 func inicar_id(Id:Array[Vector2]) -> void:
 	id =  Id
 
-func pegar_progresso(Id:Array[Vector2]) -> float:
-	return GeneralInformation.pegar_estoque(Id)[0][1]
+func pegar_progresso(Id:Array[Vector2]) -> Array:
+	return GeneralInformation.pegar_estoque(Id)
 
 func pegar_frame_atual_da_esteira() -> int:
 	return FrameAtual_da_esteira

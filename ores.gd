@@ -46,5 +46,5 @@ func _ready() -> void:
 	Ore.criar_minerios()
 	
 	Minerios = Ore.pegar_minerios()
-	for i in range(40):
+	for i in range(80):
 		colocar_minerios()

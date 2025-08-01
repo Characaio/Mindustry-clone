@@ -62,14 +62,16 @@ func despejar_minerios() -> void:
 						print("vish karai, a esteira: ", novo, ' ta cheia, pode passar la nn mano')
 	
 	print('ID das esteiras: ', EsteiraIds)
-	var aleatorio:Vector2 = EsteiraIds.pick_random()
-	print('Esteira escolhida esta no: ', aleatorio)
-	
-	GeneralInformation.mudar_item_especifico(aleatorio,'estoque_da_esteira',melhor_minerio)
-	Estoque.pop_back()
-	Informação = str('Minerio: ',melhor_minerio, ' Quantidade: ',Quantidade, ' Estoque: ', Estoque)
-	label.text = Informação
-	
+	if not EsteiraIds.is_empty():
+		var aleatorio:Vector2 = EsteiraIds.pick_random()
+		print('Esteira escolhida esta no: ', aleatorio)
+		
+		GeneralInformation.mudar_item_especifico(aleatorio,'estoque_da_esteira',melhor_minerio)
+		Estoque.pop_back()
+		Informação = str('Minerio: ',melhor_minerio, ' Quantidade: ',Quantidade, ' Estoque: ', Estoque)
+		label.text = Informação
+	else:
+		pass
 var Informação:String
 var melhor_prioridade = -1
 var melhor_minerio 
@@ -154,9 +156,15 @@ func _on_timer_timeout() -> void:
 	#print('UI, AUMENTEI, UAU: ', MinerioMinerado)
 	while MinerioMinerado > 1:
 		print('UI, minerei um ', melhor_minerio)
-		Estoque.append(melhor_minerio)
-		print('Meu Estoque é: ', Estoque)
+		if Estoque.size() <= 1:
+			animação_da_rotação.play("rotação")
+			Estoque.append(melhor_minerio)
+			print('Meu Estoque é: ', Estoque)
+			
+			Informação = str('Minerio: ',melhor_minerio, ' Quantidade: ',Quantidade, ' Estoque: ', Estoque)
+			label.text = Informação
+		else:
+			print('AAAAAAAAAAA, TO CHEIO PORRA')
+			animação_da_rotação.stop()
 		MinerioMinerado -= 1
-		Informação = str('Minerio: ',melhor_minerio, ' Quantidade: ',Quantidade, ' Estoque: ', Estoque)
-		label.text = Informação
 		despejar_minerios()
